@@ -1,0 +1,256 @@
+//VARIABLES
+$orange: rgb(242, 158, 112);
+$light-orange: rgb(244, 197, 174);
+$dark-orange: rgb(206, 107, 58);
+$grey: rgb(91, 91, 91);
+$light-grey: rgb(190, 190, 190);
+$dark-grey: rgb(56, 56, 56);
+$white: rgb(230, 230, 230);
+$black: rgb(30, 30, 30);
+$red: rgb(240, 53, 53);
+$transition: all 250ms ease;
+$dev-border: 1px solid red;
+
+//MIXINS
+@mixin font($font-family, $font-file) {
+  @font-face {
+    font-family: $font-family;
+    src: url($font-file + ".ttf") format("truetype");
+  }
+}
+
+//FONTS
+@include font("Roboto", "./fonts/Roboto-Regular");
+@include font("Roboto Italic", "./fonts/Roboto-Italic");
+@include font("Roboto Thin", "./fonts/Roboto-Thin");
+@include font("Roboto ThinItalic", "./fonts/Roboto-ThinItalic");
+@include font("Roboto Black", "./fonts/Roboto-Black");
+@include font("Roboto BlackItalic", "./fonts/Roboto-BlackItalic");
+
+//RULES
+body {
+  padding: 5%;
+  min-height: 100vh;
+  background: $orange;
+  color: $grey;
+  font-family: Roboto;
+}
+
+.freeze-view {
+  position: fixed;
+}
+
+.App {
+  position: relative;
+}
+
+.menu-icon-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  .menu-icon {
+    cursor: pointer;
+    font-size: 2em;
+    transition: $transition;
+  }
+}
+
+.menu-icon:hover {
+  color: $black;
+}
+
+.modal-content-wrapper {
+  font-family: Roboto;
+  font-size: 2em;
+  color: $white;
+  position: relative;
+  z-index: 1000;
+  .menu-title {
+    font-size: 2em;
+    text-align: center;
+    // margin-bottom: 25px;
+    font-family: Roboto Thin;
+  }
+  .menu-social-links {
+    color: $white;
+    .social-links {
+      padding: 40px 0 55px 0;
+
+      .social-link {
+        // border: $dev-border;
+        padding: 20px 32px;
+        // text-align: center;
+        cursor: pointer;
+        transition: $transition;
+        font-family: Roboto;
+        i {
+          padding: 0 15px;
+          font-size: 0.8em;
+        }
+      }
+      .social-link:hover {
+        color: $light-grey;
+        background: $dark-grey;
+        border-radius: 5px;
+      }
+    }
+  }
+  .close-modal {
+    font-family: Roboto;
+    text-transform: uppercase;
+    font-size: 0.5em;
+    position: relative;
+    // margin-bottom: ;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    padding: 15px 30px 15px 25px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: $dark-grey;
+    color: $white;
+    transition: $transition;
+
+    i {
+      padding: 0 5px;
+      position: relative;
+      top: 1px;
+      font-size: 1.1em;
+    }
+  }
+  .close-modal:hover {
+    background: $black;
+  }
+  p {
+    font-size: 0.4em;
+    text-align: center;
+    font-family: Roboto ThinItalic;
+    position: absolute;
+    bottom: -30px;
+    right: -10px;
+  }
+}
+
+.app-title {
+  font-family: Roboto Thin;
+  font-size: 5em;
+  line-height: 1.3em;
+  //   text-align: center;
+  padding-top: 40px;
+}
+
+.app-search-form {
+  //   border: $dev-border;
+  margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .error-message {
+    // border: $dev-border;
+    font-family: Roboto Italic;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: $red;
+    background: $light-orange;
+    border-radius: 5px;
+    visibility: hidden;
+  }
+  .show-error {
+    visibility: visible;
+  }
+  .app-search {
+    font-family: Roboto Italic;
+    font-size: 1.25em;
+    padding: 15px;
+    border: none;
+    background: url("./SVGs/search-duotone.svg");
+    background-repeat: no-repeat;
+    background-position: 93% 50%;
+    background-size: 25px 25px;
+    background-color: $orange;
+    color: $dark-grey;
+    border: 1px solid $dark-grey;
+    border-radius: 100px;
+    width: 85%;
+    transition: $transition;
+    box-shadow: 3px 5px 5px $dark-orange;
+  }
+  .app-search::placeholder {
+    color: $grey;
+  }
+  .app-search:hover {
+    // background-color: $light-grey;
+    // color: $dark-grey;
+    // border: 1px solid $light-grey;
+    box-shadow: 0 0 0 $dark-orange;
+  }
+  .app-search:focus {
+    background-color: $light-grey;
+    color: $dark-grey;
+    border: 1px solid $light-grey;
+    outline: none;
+  }
+  .dietary-restrictions-container {
+    // border: $dev-border;
+    margin: 15px 0;
+    padding: 10px 16px;
+    background: $light-orange;
+    border-radius: 5px;
+    color: $black;
+    font-family: Roboto;
+
+    select {
+      //   border: $dev-border;
+      font-family: Roboto Italic;
+      background: $light-orange;
+      background-image: url("./SVGs/arrow-down-duotone.svg");
+      background-repeat: no-repeat;
+      background-size: 15px 15px;
+      background-position: 90% 50%;
+      color: $black;
+      border: 1px solid $black;
+      padding: 5px 30px 5px 5px;
+      box-shadow: none;
+      appearance: none;
+      border-radius: 5px;
+      //   text-transform: capitalize;
+    }
+  }
+  .app-find {
+    margin: 20px 0;
+    font-family: Roboto BlackItalic;
+    // display: inline-block;
+    font-size: 2em;
+    // padding: 10px 60px;
+
+    padding: 15px 60px 15px 15px;
+    border: 1px solid $dark-grey;
+    background: $orange;
+    color: $dark-grey;
+    border-radius: 5px;
+    box-shadow: 3px 6px 5px $dark-orange;
+    cursor: pointer;
+    transition: $transition;
+    background: url("./SVGs/list-alt-duotone.svg") no-repeat 92% 50%;
+    background-size: 30px 30px;
+  }
+
+  .app-find:hover {
+    // background: $light-grey;
+    // border: 1px solid $light-grey;
+    box-shadow: 0 0 0 $dark-orange;
+  }
+}
+
+.recipe-cards-container {
+  //   border: $dev-border;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-gap: 10px 5px;
+  position: relative;
+  z-index: 0;
+}
