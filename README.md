@@ -20,3 +20,4 @@ Another project in my summer of React! This is an API-based web application that
 * *Git*
 * *Yarn*
 * *Mozilla Dev Tools*
+* *FontAwesome*
