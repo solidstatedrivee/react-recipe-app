@@ -37,7 +37,7 @@ function RecipeCard({ recipe }) {
                     })}
 
                 </ul>
-                <a href={recipe["recipe"]["url"]} target="_blank" className="recipe-link"><i class="fad fa-link"></i>View Recipe</a>
+                <a href={recipe["recipe"]["url"]} target="_blank" rel="noreferrer" className="recipe-link"><i class="fad fa-link"></i>View Recipe</a>
             </div>
         </div>
         ))
